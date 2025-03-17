@@ -1,0 +1,50 @@
+Steps to Run Your Prog5 Script in Unity
+Your script rotates a GameObject and shoots a 2D Raycast in the right direction. Follow these steps to test it in Unity:
+
+Step 1: Open Unity & Create a 2D Project
+Open Unity Hub and click New Project.
+Select 2D Core as the template and click Create Project.
+Step 2: Create a GameObject & Attach the Script
+Create an Empty GameObject
+
+In the Hierarchy window, click + (Create) → Create Empty
+Rename it to RotatingObject
+Attach the Script to the GameObject
+
+Select RotatingObject
+In the Inspector, click Add Component
+Search for Prog5 and click it to attach the script
+Step 3: Create a Visual Target for Raycast
+To see raycasting in action, add an object for the ray to hit.
+
+Create a 2D Sprite (Obstacle)
+In the Hierarchy, click + (Create) → 2D Object → Sprite
+Rename it to Obstacle
+Position it to the right of RotatingObject (so the ray hits it)
+Add a Collider:
+In the Inspector, click Add Component
+Search for BoxCollider2D and add it
+Step 4: Adjust the Script’s Settings
+Click on RotatingObject.
+In the Inspector, under Prog5:
+Set Speed = 20 (controls rotation speed)
+Set Distance = 10 (how far the ray shoots)
+Step 5: Run the Scene
+Click Play at the top of the Unity Editor.
+Look at the Console Window:
+If the ray hits the obstacle, it logs:
+makefile
+Copy
+Edit
+Hit: Obstacle
+If the ray does not hit anything, it logs:
+yaml
+Copy
+Edit
+No hit
+Step 6: View Debug Rays
+Stop the game.
+Go to Scene View (not Game View).
+Play the game again and look for red/green lines:
+Red Line = Ray hit an object
+Green Line = Ray missed
