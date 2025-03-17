@@ -4,12 +4,11 @@ using UnityEngine.UI;
 public class ChangeMaterialScript : MonoBehaviour
 {
     public GameObject cube, sphere, plane; // Reference to GameObjects
-
-    public Material CubeMaterial, SphereMaterial, PlaneMaterial; // New Materials
-    public Texture Texture1, Texture2, Texture3; // New Textures
-    public Button ChangeAppearanceB;
+    public Material[] materials; // Array of materials to cycle through
+    public Button changeMaterialButton;
 
     private Renderer cubeRenderer, sphereRenderer, planeRenderer;
+    private int currentMaterialIndex = 0;
 
     void Start()
     {
@@ -17,25 +16,19 @@ public class ChangeMaterialScript : MonoBehaviour
         cubeRenderer = cube.GetComponent<Renderer>();
         sphereRenderer = sphere.GetComponent<Renderer>();
         planeRenderer = plane.GetComponent<Renderer>();
-        ChangeAppearanceB.onClick.AddListener(ChangeAppearance);
+
+        // Add listener to the button
+        changeMaterialButton.onClick.AddListener(ChangeMaterial);
     }
 
-    public void ChangeAppearance()
+    public void ChangeMaterial()
     {
-        // Change Material
-        cubeRenderer.material = CubeMaterial;
-        sphereRenderer.material = SphereMaterial;
-        planeRenderer.material = PlaneMaterial;
+        // Cycle to the next material
+        currentMaterialIndex = (currentMaterialIndex + 1) % materials.Length;
 
-        // Change Texture
-        cubeRenderer.material.mainTexture = Texture1;
-        sphereRenderer.material.mainTexture = Texture2;
-        planeRenderer.material.mainTexture = Texture3;
-
-        // Change Color
-        cubeRenderer.material.color = Color.yellow;
-        sphereRenderer.material.color = Color.green;
-        planeRenderer.material.color = Color.red;
-
+        // Apply the new material to all objects
+        cubeRenderer.material = materials[currentMaterialIndex];
+        sphereRenderer.material = materials[currentMaterialIndex];
+        planeRenderer.material = materials[currentMaterialIndex];
     }
 }
